@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Easy expenses - an easy way to control your expenses using spreadsheets.
+
+Resources:
+
+  Entries:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: entries.handler
+      Runtime: nodejs6.10
+      Timeout: 10
+      Events:
+        ListEntries:
+          Type: Api
+          Properties:
+            Path: /api/v1/entries
+            Method: get
+        CreateEntry:
+          Type: Api
+          Properties:
+            Path: /api/v1/entries
+            Method: post
+
+  Categories:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: categories.handler
+      Runtime: nodejs6.10
+      Timeout: 10
+      Events:
+        ListEntries:
+          Type: Api
+          Properties:
+            Path: /api/v1/categories
+            Method: get
+
+  Spreadsheets:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: spreadsheets.handler
+      Runtime: nodejs6.10
+      Timeout: 10
+      Events:
+        CreateSpreadsheet:
+          Type: Api
+          Properties:
+            Path: /api/v1/spreadsheets
+            Method: post
