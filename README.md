@@ -16,6 +16,6 @@ npm install
 ./startDev.bash
 ```
 
-### Sending a test request
+## Sending a test request
 
 Use the front end to send a test request as you need a valid GAPI Token to be passed in the HTTP Header `gapiauth`.
